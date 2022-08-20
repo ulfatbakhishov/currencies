@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2016Dialect
+    hibernate:
+      ddl-auto: none
+  flyway:
+    enabled: true
+feign:
+  client:
+    config:
+      cbar:
+        follow-redirects: false
+        url: https://www.cbar.az/currencies
+logging:
+  level:
+    az:
+      digirella:
+        assignment:
+          currency:
+            client:
+              CbarClient: trace;
